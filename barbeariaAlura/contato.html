@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato</title>
+    <link rel="stylesheet" href="./style/reset.css" />
+    <link rel="stylesheet" href="./style/contato.css" />
+    <link rel="stylesheet" href="./style/headerAndFooter.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="caixa">
+            <h1>
+                <img src="./images/logo.png" alt="Logo principal alura" />
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html"> Home</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <form>
+            <label for="name">Nome e Sobrenome: </label>
+            <input type="text" name="name" id="name" class="inputPadrao" required placeholder="Nome completo"/>
+
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" id="email" class="inputPadrao" required placeholder="@gmail.com"/>
+
+            <label for="tel">Tel.:</label>
+            <input type="tel" name="tel" id="tel" class="inputPadrao" required placeholder="(99) 999-999-999"/>
+
+            <label for="mensagem">Mensagem:</label>
+            <textarea name="mensagem" id="mensagem" cols="50" rows="15"class="inputPadrao" required placeholder="Escreva sua mensagem..."></textarea>
+
+            <!-- O elemento HTML <fieldset> é usado para agrupar elementos, assim como labels (<label>), dentro de um formulário web. 
+                legend é seu titulo ou melhor sua legenda -->
+            <fieldset class="radio">
+                <legend>Como deseja ser contactado?</legend>
+                <label for="radioEmail"><input type="radio" name="radioContato" id="radioEmail" value="email" />Email:</label>
+                
+
+                <label for="radioTel"><input type="radio" name="radioContato" id="radioTel" value="tel" />Tel.:</label>
+                
+
+                <label for="radioWhatsapp"><input type="radio" name="radioContato" id="radioWhatsapp" value="whatsapp" checked />Whatsapp:</label>
+                
+                <!-- A propriedade "name" em radios, categoriza todas as tags com o mesmo "name" como de um mesmo grupo,
+            sendo assim, quando se é marcada uma a outra desmarca automaticamente, deixando apenas se marcar uma das opções; -->
+            </fieldset>
+            <fieldset>
+            <legend>Qual horário deseja ser atendido?</legend>
+                <select>
+                    <option value="select">Manhã</option>
+                    <option value="select">Tarde</option>
+                    <option value="select">Noite</option>
+                </select>
+            </fieldset>
+            <label for="checkbox"><input type="checkbox" name="checkbox" id="checkbox" class="checkbox" checked> Gostaria de receber nossas novidades por email.</label>
+            
+
+
+            <input type="submit" value="Enviar" class="enviar"/>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <!-- colspan é a propriedade usada para atribuir o tamanmho de uma determinada quantidade de colunas a apenas uma. 
+                        Sendo colspan="2" a coluna que foi atribido o colspan recebe o tamanho de 2 colunas normais. -->
+                    <th colspan="1">Dia</td>
+                    <th>Horário</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Segunda-feira</td>
+                    <td>8h ~ 20h</td>
+                </tr>
+                <tr>
+                    <td>Quarta-feira</td>
+                    <td>8h ~ 20h</td>
+                </tr>
+                <tr>
+                    <td>Sexta-feira</td>
+                    <td>8h ~ 20h</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <img src="./images/logo-branco.png" alt="Logo da barbearia Alura" />
+        <p class="copyright">&copy; Copyright Barbearia Alura - 2021</p>
+    </footer>
+</body>
+
+</html>
