@@ -3,16 +3,30 @@ let  titulo = document.querySelector("#titulo");
 
     titulo.textContent = 'Aparecida nutricionista';
 
+// Mostra e esconde o header(com addEventListener)    
 let showHeader = document.querySelector('.headerShow');
 let bntShowBar = document.querySelector('.bntHiddBar');
-showHeader.addEventListener('click', function(){
-    showHeader.classList.add('header-hidden');
-    bntShowBar.classList.add('bntShowBar');
-});
-bntShowBar.addEventListener('click', function(){
-    showHeader.classList.remove('header-hidden');
-    bntShowBar.classList.remove('bntShowBar');
-});
+
+// showHeader.addEventListener('click', function(){
+//     showHeader.classList.add('header-hidden');
+//     bntShowBar.classList.add('bntShowBar');
+// });
+// bntShowBar.addEventListener('click', function(){
+//     showHeader.classList.remove('header-hidden');
+//     bntShowBar.classList.remove('bntShowBar');
+// });
+
+//Mostra e esconde o header(.onclick) - TAMBÉM FUNCIONA NORMALMENTE.
+    function Esconde() {
+        showHeader.classList.add('header-hidden');
+        bntShowBar.classList.add('bntShowBar');
+    }
+    function Mostra() {
+        showHeader.classList.remove('header-hidden');
+        bntShowBar.classList.remove('bntShowBar');
+    }
+    showHeader.onclick = Esconde;
+    bntShowBar.onclick = Mostra;
 
     
 let pacientes =  document.querySelectorAll('.paciente');
@@ -43,7 +57,7 @@ let altValid = true;
     } 
     if (pesoValid && altValid) {
         console.log('Altura: ', alturaPaciente, '- Peso: ' ,pesoPaciente);
-        let imc = (pesoPaciente / (Math.pow(alturaPaciente, 2)));
+        var imc = (pesoPaciente / (Math.pow(alturaPaciente, 2)));
         
             console.log('Resultado IMC: ', imc);
         
@@ -96,6 +110,41 @@ let btnAdd = document.querySelector('#adicionar-paciente');
 // });
 
 btnAdd.addEventListener('click', function (event) {
+    // Previnir que o botaão faça sua função básica, de enviar os inputs.
     event.preventDefault();
-    console.log('fui clicado');
+    
+    // Obtendo acesso aos inputs pelo 'name'
+    let form = document.querySelector('#form-adiciona');
+    let nome = form.nome.value;
+    let peso = form.peso.value;
+    let altura = form.altura.value;
+    let gordura = form.gordura.value;
+    console.log(nome, peso, altura, gordura);
+
+    // Criando um elemento
+    var pacienteTr = document.createElement('tr');
+    var nomeTd = document.createElement('td');
+    var pesoTd = document.createElement('td');
+    var alturaTd = document.createElement('td');
+    var gorduraTd = document.createElement('td');
+    var imcTd = document.createElement('td');
+
+    nomeTd.textContent = nome;
+    pesoTd.textContent = peso;
+    alturaTd.textContent = altura;
+    gorduraTd.textContent = gordura;
+    imcTd.textContent = (peso / (Math.pow(altura, 2))).toFixed(2);
+
+    // Colocando as tags criadas(td) dentro da tag pai Tr
+    pacienteTr.appendChild(nomeTd);
+    pacienteTr.appendChild(pesoTd);
+    pacienteTr.appendChild(alturaTd);
+    pacienteTr.appendChild(gorduraTd);
+    pacienteTr.appendChild(imcTd);
+    console.log(pacienteTr);
+
+    let tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
+
+
 });
