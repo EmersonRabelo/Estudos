@@ -1,70 +1,15 @@
-
-let  titulo = document.querySelector("#titulo");
-
-    titulo.textContent = 'Aparecida nutricionista';
-
-// Mostra e esconde o header(com addEventListener)    
-let showHeader = document.querySelector('.headerShow');
-let bntShowBar = document.querySelector('.bntHiddBar');
-
-// showHeader.addEventListener('click', function(){
-//     showHeader.classList.add('header-hidden');
-//     bntShowBar.classList.add('bntShowBar');
-// });
-// bntShowBar.addEventListener('click', function(){
-//     showHeader.classList.remove('header-hidden');
-//     bntShowBar.classList.remove('bntShowBar');
-// });
-
 //Mostra e esconde o header(.onclick) - TAMBÉM FUNCIONA NORMALMENTE.
-    function Esconde() {
-        showHeader.classList.add('header-hidden');
-        bntShowBar.classList.add('bntShowBar');
-    }
-    function Mostra() {
-        showHeader.classList.remove('header-hidden');
-        bntShowBar.classList.remove('bntShowBar');
-    }
-    showHeader.onclick = Esconde;
-    bntShowBar.onclick = Mostra;
+function Esconde() {
+    showHeader.classList.add('header-hidden');
+    bntShowBar.classList.add('bntShowBar');
+}
+function Mostra() {
+    showHeader.classList.remove('header-hidden');
+    bntShowBar.classList.remove('bntShowBar');
+}
+showHeader.onclick = Esconde;
+bntShowBar.onclick = Mostra;
 
-    
-let pacientes =  document.querySelectorAll('.paciente');
- for (let i = 0; i < pacientes.length; i++) {
-
-    var paciente = pacientes[i];
-
-// let pesoPaciente = paciente.querySelector('.info-peso').textContent;
-let pesoPaciente = paciente.querySelector('.info-peso').textContent;
-let alturaPaciente = paciente.querySelector('.info-altura').textContent;
-let resultIMC = paciente.querySelector('.info-imc');
-let pesoValid = true;
-let altValid = true;
-
-    if (pesoPaciente <= 0 || pesoPaciente >= 200) {
-        // alert('Peso inválido');
-        console.log('Peso inválido'); 
-        pesoValid = false;
-        resultIMC.textContent = 'Peso inválido';
-        paciente.classList.add('paciente-invalido');
-    } 
-    if (alturaPaciente <= 0 || alturaPaciente >= 3){
-        // alert('Altura inválida');
-        console.log('Altura inválida');
-        altValid = false;
-        resultIMC.textContent = 'Altura inválida';
-        paciente.classList.add('paciente-invalido');
-    } 
-    if (pesoValid && altValid) {
-        console.log('Altura: ', alturaPaciente, '- Peso: ' ,pesoPaciente);
-        var imc = (pesoPaciente / (Math.pow(alturaPaciente, 2)));
-        
-            console.log('Resultado IMC: ', imc);
-        
-            resultIMC.textContent = imc.toFixed(2);
-            // toFixed(x) - Recebe um valor X, que representa o numero de casas após a virgula.
-    }
-}   
 // MOSTRADO NA AULA.
 // var pacientes = document.querySelectorAll(".paciente");
 
@@ -128,12 +73,16 @@ btnAdd.addEventListener('click', function (event) {
     var alturaTd = document.createElement('td');
     var gorduraTd = document.createElement('td');
     var imcTd = document.createElement('td');
+    var classTd = document.createElement('td');
 
     nomeTd.textContent = nome;
     pesoTd.textContent = peso;
     alturaTd.textContent = altura;
     gorduraTd.textContent = gordura;
-    imcTd.textContent = (peso / (Math.pow(altura, 2))).toFixed(2);
+    imcTd.textContent = calculaImc(peso, altura);
+    // classTd.textContent = classification(imcTd.textContent);
+    //VER DEPOIS(DEBITO TÉCNICO)
+    
 
     // Colocando as tags criadas(td) dentro da tag pai Tr
     pacienteTr.appendChild(nomeTd);
@@ -141,6 +90,7 @@ btnAdd.addEventListener('click', function (event) {
     pacienteTr.appendChild(alturaTd);
     pacienteTr.appendChild(gorduraTd);
     pacienteTr.appendChild(imcTd);
+    pacienteTr.appendChild(classTd);
     console.log(pacienteTr);
 
     let tabela = document.querySelector("#tabela-pacientes");
